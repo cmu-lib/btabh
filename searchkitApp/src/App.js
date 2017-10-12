@@ -67,13 +67,21 @@ class App extends Component {
           <RefinementListFilter id="type" title="Type" field="_type" operator="OR"/>
             <HierarchicalMenuFilter
                   fields={["to.lastName", "to.firstName", "to.paternalName"]}
-                  title="name" id="to"/>
+                  title="name" id="to" orderKey="_term" size={50}/>
+          <MenuFilter containerComponent={<Panel collapsable={true} defaultCollapsed={true}/>}
+                  id="to.lastName"
+                  title="lastName"
+                  field="to.lastName"
+                  listComponent={ItemList}
+                  size={60}
+                  orderKey="_term"/>
           <MenuFilter containerComponent={<Panel collapsable={true} defaultCollapsed={true}/>}
   								id="place"
   								title="place"
   								field="place.raw"
   								listComponent={ItemList}
-  								size={5}/>
+  								size={60}
+                  orderKey="_term"/>
 
           </SideBar>
           <LayoutResults>
