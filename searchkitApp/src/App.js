@@ -51,46 +51,47 @@ const tolListItem = (props)=> {
 }
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state ={data: true};
+  }
+  btnClick(){
+ this.setState(prevState => ({data: !prevState.data}));
+}
   render() {
     return (
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
           <TopBar>
-            <div className="my-logo">Tolstoy Search</div>
+            <div className="my-logo">{this.state.data ? "Beyond The Ant Brotherhood" : "За пределами Братства муравьев" }</div>
             <SearchBox autofocus={true} searchOnChange={true} prefixQueryFields={["source^1","content^2","notes^10","id^10"]}/>
           </TopBar>
 
         <LayoutBody>
 
           <SideBar>
-          <RangeFilter min={-4000000000000} max={-1736980907407} field="date" id="date" title="Date" showHistogram={true}/>
-          <RefinementListFilter id="type" title="Type" field="_type" operator="OR"/>
+          <RefinementListFilter id="type" title={this.state.data ? "Type" : "Тип" } field="_type" operator="OR"/>
             <HierarchicalMenuFilter
                   fields={["to.lastName", "to.firstName", "to.paternalName"]}
-                  title="name" id="to" orderKey="_term" size={50}/>
-          <MenuFilter containerComponent={<Panel collapsable={true} defaultCollapsed={true}/>}
-                  id="to.lastName"
-                  title="lastName"
-                  field="to.lastName"
-                  listComponent={ItemList}
-                  size={60}
-                  orderKey="_term"/>
+                  title={this.state.data ? "Date" : "Дата" } id="to"/>
           <MenuFilter containerComponent={<Panel collapsable={true} defaultCollapsed={true}/>}
   								id="place"
-  								title="place"
+  								title={this.state.data ? "place" : "Место" }
   								field="place.raw"
   								listComponent={ItemList}
-  								size={60}
-                  orderKey="_term"/>
+  								size={5}/>
 
           </SideBar>
           <LayoutResults>
             <ActionBar>
+            <RangeFilter min={-4000000000000} max={-1736980907407} field="date" id="date" title= {this.state.data ? "Date" : "DATA" } showHistogram={true}/>
 
               <ActionBarRow>
+
                 <HitsStats translations={{
                   "hitstats.results_found":"{hitCount} results found"
                 }}/>
+                <button onClick={this.btnClick.bind(this)}>{this.state.data ? 'EN' : 'RU'}</button>
                 <ViewSwitcherToggle/>
                 <SortingSelector options={[
                   {label:"Relevance", field:"_score", order:"desc"},
