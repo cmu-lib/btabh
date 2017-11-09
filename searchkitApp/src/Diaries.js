@@ -16,7 +16,7 @@ import PropTypes from 'prop-types'
 
 
 
-const host = "http://localhost:9200/tolstoy"
+const host = "http://128.2.24.48:9200/tolstoy"
 const searchkit = new SearchkitManager(host)
 var pathArray = window.location.pathname.split( '/' );
 var secondLevelLocation = pathArray[2];

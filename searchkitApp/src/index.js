@@ -22,8 +22,8 @@ const HomePage = () => (
 
       <Route exact path="/Search" component={App}/>
       <Route exact path="/About" component={About}/>
-      <Route exact path="/letters/:_id" component={letters}/>
-      <Route exact path="/diaries/:_id" component={diaries}/>
+      <Route exact path="/letter/:_id" component={letters}/>
+      <Route exact path="/diary/:_id" component={diaries}/>
     </div>
   </Router>
 )

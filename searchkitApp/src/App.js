@@ -12,7 +12,7 @@ import './index.css'
 import { DateRangeFilter } from "searchkit-daterangefilter"
 
 
-const host = "http://localhost:9200/tolstoy"
+const host = "http://128.2.24.48:9200/tolstoy"
 const searchkit = new SearchkitManager(host)
 
 
@@ -115,7 +115,7 @@ class App extends Component {
                 scrollTo="body"
             />
 
-            <NoHits suggestionsField={"title"}/>
+            <NoHits suggestionsField={"_id"}/>
             <Pagination showNumbers={true}/>
           </LayoutResults>
 
